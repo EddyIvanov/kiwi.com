@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Kiwi.com React Coding Exercise Repo (applying for Frontend position)
 
-## Available Scripts
+## Fullstack JS homework
+Implement a number to word list converter as a Node backend and React fronted.
 
-In the project directory, you can run:
+The backend should provide an endpoint that converts a given numeric string
+into a list of corresponding words in the style of T9
+[https://en.wikipedia.org/wiki/T9_(predictive_text)]
+or Phonewords [https://en.wikipedia.org/wiki/Phoneword]. For example, given
+the input 23 the output should be: ad, ae, af, bd, be, bf, cd, ce, cf
 
-### `yarn start`
+The frontend should allow the user to enter a number, query the backend for
+the corresponding expansions, and display them.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The solution should be shared with us in a git repository with real history included.
+It's OK not to deliver 100%, but the more working parts the better. For example if you
+struggle with the backend, focus on frontend and just mock the API calls.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Take this task as a chance to present your skills. If you are good in UI,
+let us see that. If you are more into the backend, it's OK to have simple FE.
+If you know what tests are for, don't keep it for yourself, show it in the code.
 
-### `yarn test`
+Ways to go beyond the minimal solution could include for example:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> phone keyboard -like UI
 
-### `yarn build`
+> great project setup
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> mobile app in React Native
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+> filtering to include only real words based on a suitable word list
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The task should contain unit tests
