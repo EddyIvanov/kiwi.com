@@ -22,6 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "yarn test -- --coverage --watchAll",
+    "lint": "yarn jest --config=.jest-eslint.config.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -38,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@kiwicom/eslint-config": "^8.4.0",
+    "eslint": "^7.11.0"
   }
 }
