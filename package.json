@@ -41,7 +41,6 @@
     ]
   },
   "devDependencies": {
-    "@kiwicom/eslint-config": "^8.4.0",
-    "eslint": "^7.11.0"
+    "@kiwicom/eslint-config": "^8.4.0"
   }
 }

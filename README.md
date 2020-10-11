@@ -22,12 +22,9 @@ If you know what tests are for, don't keep it for yourself, show it in the code.
 
 Ways to go beyond the minimal solution could include for example:
 
-> phone keyboard -like UI
-
-> great project setup
-
-> mobile app in React Native
-
-> filtering to include only real words based on a suitable word list
+1. phone keyboard -like UI
+2. great project setup
+3. mobile app in React Native
+4. filtering to include only real words based on a suitable word list
 
 The task should contain unit tests
