@@ -1,6 +1,6 @@
 import React from "react";
 import { MessagesInputProps } from "./types";
-import StyledMessagesInput from "./MessagesInput.styled";
+import StyledMessagesInput from "./styled/styledMessagesInput";
 import Icon from "../Icon";
 import Button from "../ui/button";
 import { send } from "../../icons/send";
@@ -9,16 +9,16 @@ import Input from "../ui/input";
 const MessagesInput: React.FC<MessagesInputProps> = ({ value, handleActiveInput, onSendMessage, onChange }: MessagesInputProps) => {
     return (
         <StyledMessagesInput className="MessagesInput">
-            <Input
+            <StyledMessagesInput.InputField
                 value={value}
                 placeholder="Type message"
                 onChange={onChange}
                 onFocus={handleActiveInput}
                 onBlur={handleActiveInput}
             />
-            <Button disabled={value === ""}>
+            <StyledMessagesInput.SendButton disabled={value === ""}>
                 <Icon svgPaths={send} onClick={onSendMessage} />
-            </Button>
+            </StyledMessagesInput.SendButton>
         </StyledMessagesInput>
     );
 };

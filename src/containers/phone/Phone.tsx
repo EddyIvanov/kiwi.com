@@ -3,7 +3,9 @@ import Keyboard from "../../components/keyboard";
 import { KEYBOARD_KEYS } from "../../components/keyboard/constants";
 import MessagesList from "../../components/messagesList";
 import Screen from "../../components/ui/screen";
+import PhoneFrame from "../../components/ui/phoneFrame";
 import MessagesInput from "../../components/messagesInput";
+import TypingPanel from "../../components/ui/typingPanel";
 
 const Phone: React.FC = () => {
     const [messages, setMessages] = React.useState([]);
@@ -28,13 +30,18 @@ const Phone: React.FC = () => {
     }
 
     return (
-        <Screen>
-            {messages.length > 0 &&
-                <MessagesList messages={messages} />
-            }
-            <MessagesInput value={messageInputValue} onChange={handleMessageInputChange} handleActiveInput={handleActiveInput} onSendMessage={onSendMessage} />
-            <Keyboard keys={KEYBOARD_KEYS} onKeyPress={handleKeyPress} />
-        </Screen>
+
+        <PhoneFrame>
+            <Screen>
+                {messages.length > 0 &&
+                    <MessagesList messages={messages} />
+                }
+                <TypingPanel>
+                    <MessagesInput value={messageInputValue} onChange={handleMessageInputChange} handleActiveInput={handleActiveInput} onSendMessage={onSendMessage} />
+                    <Keyboard keys={KEYBOARD_KEYS} onKeyPress={handleKeyPress} />
+                </TypingPanel>
+            </Screen>
+        </PhoneFrame>
     );
 };
 
