@@ -1,20 +1,62 @@
 import React from "react";
 import Keyboard from "../../components/keyboard";
-import { KEYBOARD_KEYS } from "../../components/keyboard/constants";
+import T9 from "../../components/t9";
+import { KEYBOARD_KEYS, KEYS } from "../../components/keyboard/constants";
 import MessagesList from "../../components/messagesList";
 import Screen from "../../components/ui/screen";
 import PhoneFrame from "../../components/ui/phoneFrame";
 import MessagesInput from "../../components/messagesInput";
 import TypingPanel from "../../components/ui/typingPanel";
+import { hasOnlyDigits } from "../../utils/hasOnlyDigits";
+import { getLastWordFromString } from "../../utils/getLastWordFromString";
 
 const Phone: React.FC = () => {
     const [messages, setMessages] = React.useState([]);
     const [messageInputValue, setMessageInputValue] = React.useState("");
     const [visibleKeyboard, setVisibleKeyboard] = React.useState(false);
+    const [message, setMessage] = React.useState("");
+    const [t9Message, setT9Message] = React.useState("");
 
     const handleKeyPress = (value: string) => {
-
+        if (value === "space") {
+            setMessage(prevValue => prevValue + " ");
+            setT9Message("");
+        } else if (value === "remove") {
+            handleRemove();
+        } else {
+            setMessage(prevValue => prevValue + value);
+            setT9Message(prevValue => prevValue + value);
+        }
     }
+
+    const handleRemove = () => {
+        const newMessage = message.slice(0, -1);
+        const lastWord = getLastWordFromString(newMessage);
+
+        if (hasOnlyDigits(lastWord)) {
+            setT9Message(lastWord);
+        } else {
+            setT9Message(prevValue => prevValue.slice(0, -1));
+        }
+        setMessage(newMessage);
+    }
+
+    const onSendMessage = () => {
+        setMessages(messages => [...messages, message] as any);
+        setMessage("");
+    }
+
+    const onT9Select = (word: string) => {
+        const lastSpace = message.lastIndexOf(" ") + 1;
+        const newMessage = message.slice(0, lastSpace) + word + " ";
+
+        setMessage(newMessage);
+        setT9Message("");
+    }
+
+
+
+
 
     const handleActiveInput = () => {
 
@@ -24,21 +66,18 @@ const Phone: React.FC = () => {
         setMessageInputValue(event.target.value);
     }
 
-    const onSendMessage = () => {
-        setMessages(messages => [...messages, messageInputValue] as any);
-        setMessageInputValue("");
-    }
+
 
     return (
-
         <PhoneFrame>
             <Screen>
                 {messages.length > 0 &&
                     <MessagesList messages={messages} />
                 }
                 <TypingPanel>
-                    <MessagesInput value={messageInputValue} onChange={handleMessageInputChange} handleActiveInput={handleActiveInput} onSendMessage={onSendMessage} />
-                    <Keyboard keys={KEYBOARD_KEYS} onKeyPress={handleKeyPress} />
+                    <MessagesInput value={message} onChange={handleMessageInputChange} handleActiveInput={handleActiveInput} onSendMessage={onSendMessage} />
+                    <T9 inputValue={t9Message} onSelect={onT9Select} />
+                    <Keyboard keys={KEYS} onKeyPress={handleKeyPress} />
                 </TypingPanel>
             </Screen>
         </PhoneFrame>

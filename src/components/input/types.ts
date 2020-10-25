@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 
 export interface InputProps {
-    name: string,
+    name?: string,
     value: any,
     type: string,
     placeholder: string,
