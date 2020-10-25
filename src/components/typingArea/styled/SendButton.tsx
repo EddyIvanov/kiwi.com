@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Button from '../../../ui/button';
+import Button from '../../ui/button';
 
 const SendButton = styled(Button)`
     width: 40px;

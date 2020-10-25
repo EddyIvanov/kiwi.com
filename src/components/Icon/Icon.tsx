@@ -1,8 +1,7 @@
 import React, { PureComponent, HTMLAttributes } from 'react';
-
 import { IconPath } from './types';
-import { StyledIcon } from './Icon.styled';
-import { renderPaths } from './utils';
+import { renderPaths } from './utils/renderPaths';
+import StyledIcon from './styled';
 
 interface IconProps extends HTMLAttributes<HTMLDivElement> {
     svgPaths: IconPath[];

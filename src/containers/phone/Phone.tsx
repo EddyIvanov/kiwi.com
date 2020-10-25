@@ -1,19 +1,17 @@
 import React from "react";
 import Keyboard from "../../components/keyboard";
 import T9 from "../../components/t9";
-import { KEYBOARD_KEYS, KEYS } from "../../components/keyboard/constants";
+import { KEYBOARD_KEYS, KEYBOARD_ENTITIES } from "../../components/keyboard/constants";
 import MessagesList from "../../components/messagesList";
 import Screen from "../../components/ui/screen";
 import PhoneFrame from "../../components/ui/phoneFrame";
-import MessagesInput from "../../components/messagesInput";
 import TypingPanel from "../../components/ui/typingPanel";
 import { hasOnlyDigits } from "../../utils/hasOnlyDigits";
 import { getLastWordFromString } from "../../utils/getLastWordFromString";
+import TypingArea from "../../components/typingArea";
 
 const Phone: React.FC = () => {
     const [messages, setMessages] = React.useState([]);
-    const [messageInputValue, setMessageInputValue] = React.useState("");
-    const [visibleKeyboard, setVisibleKeyboard] = React.useState(false);
     const [message, setMessage] = React.useState("");
     const [t9Message, setT9Message] = React.useState("");
 
@@ -54,20 +52,6 @@ const Phone: React.FC = () => {
         setT9Message("");
     }
 
-
-
-
-
-    const handleActiveInput = () => {
-
-    }
-
-    const handleMessageInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setMessageInputValue(event.target.value);
-    }
-
-
-
     return (
         <PhoneFrame>
             <Screen>
@@ -75,9 +59,9 @@ const Phone: React.FC = () => {
                     <MessagesList messages={messages} />
                 }
                 <TypingPanel>
-                    <MessagesInput value={message} onChange={handleMessageInputChange} handleActiveInput={handleActiveInput} onSendMessage={onSendMessage} />
-                    <T9 inputValue={t9Message} onSelect={onT9Select} />
-                    <Keyboard keys={KEYS} onKeyPress={handleKeyPress} />
+                    <TypingArea value={message} onSendMessage={onSendMessage} />
+                    <T9 digitMapping={KEYBOARD_ENTITIES} inputValue={t9Message} onSelect={onT9Select} />
+                    <Keyboard keys={KEYBOARD_KEYS} onKeyPress={handleKeyPress} />
                 </TypingPanel>
             </Screen>
         </PhoneFrame>

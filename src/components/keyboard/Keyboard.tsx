@@ -1,7 +1,7 @@
 import React from "react";
 import { KeyboardProps } from "./types";
-import StyledKeyboard from "./styled/styledKeyboard";
-import { KEYS_CONTENT } from "./constants";
+import StyledKeyboard from "./styled";
+import { KEYBOARD_ENTITIES } from "./constants";
 
 const Keyboard: React.FC<KeyboardProps> = ({ keys, onKeyPress }: KeyboardProps) => {
     return (
@@ -11,10 +11,10 @@ const Keyboard: React.FC<KeyboardProps> = ({ keys, onKeyPress }: KeyboardProps) 
                     <StyledKeyboard.Button key={key} onClick={() => onKeyPress(key)}>
                         <StyledKeyboard.Title>{key}</StyledKeyboard.Title>
                         <StyledKeyboard.Subtitles>
-                            {KEYS_CONTENT[key].map((subtitle: any) => {
+                            {KEYBOARD_ENTITIES[key].map((subtitle: any) => {
                                 return (
                                     <div key={`${key}-${subtitle}`}>
-                                        {subtitle &&
+                                        {subtitle && key !== subtitle &&
                                             <span>{subtitle}</span>
                                         }
                                     </div>

@@ -1,14 +1,14 @@
 import React from "react";
 import Message from "../ui/message";
 import { MessagesListProps } from './types';
-import StyledMessagesList from './StyledMessagesList';
+import StyledMessagesList from './styled';
 
 const MessagesList: React.FC<MessagesListProps> = ({ messages }: MessagesListProps) => {
     return (
         <StyledMessagesList className="MessagesList">
-            {messages.map(message => {
+            {messages.map((message, index) => {
                 return (
-                    <Message>{message} </Message>
+                    <Message key={index}>{message} </Message>
                 )
             })}
         </StyledMessagesList>

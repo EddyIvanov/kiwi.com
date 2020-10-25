@@ -6,13 +6,13 @@ import Icon from "../Icon";
 import { arrowRight } from "../../icons/arrow-right";
 import { arrowLeft } from "../../icons/arrow-left";
 
-const T9: React.FC<T9Props> = memo(({ inputValue, onSelect }: T9Props) => {
-    const [predictions, setPredictions] = React.useState([]);
+const T9: React.FC<T9Props> = memo(({ inputValue, digitMapping, onSelect }: T9Props) => {
+    const [predictions, setPredictions] = React.useState<string[]>([]);
     const [hasMorePredictions, setHasMorePredictions] = React.useState(false);
     const ScrollbarRef = useRef<null | HTMLElement>(null);
 
     useEffect(() => {
-        const predictions = letterPredictions(inputValue);
+        const predictions = letterPredictions(inputValue, digitMapping);
         setPredictions(predictions);
     }, [inputValue]);
 

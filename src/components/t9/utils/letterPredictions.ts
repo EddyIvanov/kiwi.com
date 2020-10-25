@@ -1,10 +1,7 @@
-import { mapping } from "../constants/mapping";
-import { KEYS_CONTENT } from "../../keyboard/constants";
-
-export const letterPredictions = (digits: string) => {
+export const letterPredictions = (digits: string, digitMapping: Record<string, string[]>) => {
     if (!digits || !digits.length) return [];
 
-    const lettersMatrix = digits.split('').map(digit => KEYS_CONTENT[digit] || ['']);
+    const lettersMatrix = digits.split('').map(digit => digitMapping[digit] || ['']);
 
     return lettersMatrix.reduce((strings: any, currentEntry: any) => {
         const combinations: string[] = [];
