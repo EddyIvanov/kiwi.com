@@ -1,26 +1,28 @@
 import React, { useEffect, memo, useRef } from "react";
 import StyledT9 from "./styled";
 import { letterPredictions } from "./utils/letterPredictions";
-import { T9Props } from "./types";
+import { T9Props, ScrollDirection } from "./types";
 import Icon from "../Icon";
 import { arrowRight } from "../../icons/arrow-right";
 import { arrowLeft } from "../../icons/arrow-left";
 
+const SCROLL_STEP = 20;
+
 const T9: React.FC<T9Props> = memo(({ inputValue, digitMapping, onSelect }: T9Props) => {
     const [predictions, setPredictions] = React.useState<string[]>([]);
-    const [hasMorePredictions, setHasMorePredictions] = React.useState(false);
+    const [hasScrollbar, setHasScrollbar] = React.useState(false);
     const ScrollbarRef = useRef<null | HTMLElement>(null);
 
     useEffect(() => {
         const predictions = letterPredictions(inputValue, digitMapping);
         setPredictions(predictions);
-    }, [inputValue]);
+    }, [inputValue, digitMapping]);
 
     useEffect(() => {
         if (isScrollbarVisible(ScrollbarRef)) {
-            setHasMorePredictions(true);
+            setHasScrollbar(true);
         } else {
-            setHasMorePredictions(false);
+            setHasScrollbar(false);
         }
     }, [predictions]);
 
@@ -34,24 +36,18 @@ const T9: React.FC<T9Props> = memo(({ inputValue, digitMapping, onSelect }: T9Pr
         return scrollbarElement.scrollWidth > scrollbarElement.clientWidth ? true : false;
     }
 
-    const scrollToRight = () => {
+    const scroll = (direction: ScrollDirection = "right") => {
         const scrollBarElement = ScrollbarRef.current;
 
         if (!scrollBarElement) {
             return;
         }
 
-        scrollBarElement.scrollLeft += 20;
-    }
-
-    const scrollToLeft = () => {
-        const scrollBarElement = ScrollbarRef.current;
-
-        if (!scrollBarElement) {
-            return;
+        if (direction === "right") {
+            scrollBarElement.scrollLeft += SCROLL_STEP;
+        } else {
+            scrollBarElement.scrollLeft -= SCROLL_STEP;
         }
-
-        scrollBarElement.scrollLeft -= 20;
     }
 
     return (
@@ -59,17 +55,17 @@ const T9: React.FC<T9Props> = memo(({ inputValue, digitMapping, onSelect }: T9Pr
             <StyledT9.Scrollbar ref={ScrollbarRef}>
                 {predictions.map(word => {
                     return (
-                        <StyledT9.Button key={word} onClick={() => onSelect(word)}>{word}</StyledT9.Button>
+                        <StyledT9.TextButton key={word} onClick={() => onSelect(word)}>{word}</StyledT9.TextButton>
                     )
                 })}
             </StyledT9.Scrollbar>
-            {hasMorePredictions &&
+            {hasScrollbar &&
                 <>
-                    < StyledT9.Icon onClick={scrollToLeft} style={{ left: 0, right: "inherit" }}>
-                        <Icon svgPaths={arrowLeft} />
+                    < StyledT9.Icon onClick={() => scroll("left")} style={{ left: 0, right: "inherit" }}>
+                        <Icon svgPaths={arrowLeft} title="See previous" />
                     </StyledT9.Icon>
-                    < StyledT9.Icon onClick={scrollToRight}>
-                        <Icon svgPaths={arrowRight} />
+                    < StyledT9.Icon onClick={() => scroll("right")}>
+                        <Icon svgPaths={arrowRight} title="See next" />
                     </StyledT9.Icon>
                 </>
             }

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import Button from '../../ui/button';
 
-const Button = styled.div`
+const TextButton = styled(Button)`
     display: inline-flex;
     justify-content: center;
     font-size: 14px;
@@ -14,4 +15,4 @@ const Button = styled.div`
     }
 `
 
-export default Button;
+export default TextButton;

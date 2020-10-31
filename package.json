@@ -25,6 +25,12 @@
     "lint": "yarn jest --config=.jest-eslint.config.js",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "!src/serviceWorker.js",
+      "!src/index.tsx"
+    ]
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

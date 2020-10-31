@@ -42,6 +42,7 @@ const Phone: React.FC = () => {
     const onSendMessage = () => {
         setMessages(messages => [...messages, message] as any);
         setMessage("");
+        setT9Message("");
     }
 
     const onT9Select = (word: string) => {

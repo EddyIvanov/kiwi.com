@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import Button from '../../ui/button';
 
-const Button = styled.div`
+const Key = styled(Button)`
     display: inline-flex;
     flex-basis: 33.33%;
     flex-direction: column;
@@ -20,4 +21,4 @@ const Button = styled.div`
     }
 `
 
-export default Button;
+export default Key;

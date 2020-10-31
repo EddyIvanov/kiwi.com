@@ -9,7 +9,7 @@ interface IconProps extends HTMLAttributes<HTMLDivElement> {
 
 export class Icon extends PureComponent<IconProps> {
     render() {
-        const { svgPaths, className = '', ...rest } = this.props;
+        const { svgPaths, ...rest } = this.props;
 
         return (
             <StyledIcon

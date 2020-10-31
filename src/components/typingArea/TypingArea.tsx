@@ -5,7 +5,7 @@ import Icon from "../Icon";
 import { send } from "../../icons/send";
 
 const TypingArea: React.FC<MessagesInputProps> = ({ value, onSendMessage }: MessagesInputProps) => {
-    const InputRef = useRef<null | HTMLInputElement>(null);
+    const InputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         const inputEl = InputRef.current;
@@ -30,7 +30,7 @@ const TypingArea: React.FC<MessagesInputProps> = ({ value, onSendMessage }: Mess
                 placeholder="Type message"
             />
             <StyledTypingArea.SendButton disabled={value === ""}>
-                <Icon svgPaths={send} onClick={onSendMessage} />
+                <Icon svgPaths={send} onClick={onSendMessage} title="Send" />
             </StyledTypingArea.SendButton>
         </StyledTypingArea>
     );

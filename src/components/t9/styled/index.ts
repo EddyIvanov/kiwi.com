@@ -1,9 +1,9 @@
 import StyledT9 from './StyledT9';
-import Button from './Button';
+import TextButton from './TextButton';
 import Icon from './Icon';
 import Scrollbar from './Scrollbar';
 
-StyledT9.Button = Button;
+StyledT9.TextButton = TextButton;
 StyledT9.Icon = Icon;
 StyledT9.Scrollbar = Scrollbar;
 

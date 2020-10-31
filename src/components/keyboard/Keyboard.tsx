@@ -8,7 +8,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ keys, onKeyPress }: KeyboardProps) 
         <StyledKeyboard className="Keyboard">
             {keys.map(key => {
                 return (
-                    <StyledKeyboard.Button key={key} onClick={() => onKeyPress(key)}>
+                    <StyledKeyboard.Key key={key} onClick={() => onKeyPress(key)}>
                         <StyledKeyboard.Title>{key}</StyledKeyboard.Title>
                         <StyledKeyboard.Subtitles>
                             {KEYBOARD_ENTITIES[key].map((subtitle: any) => {
@@ -21,7 +21,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ keys, onKeyPress }: KeyboardProps) 
                                 )
                             })}
                         </StyledKeyboard.Subtitles>
-                    </StyledKeyboard.Button>
+                    </StyledKeyboard.Key>
                 )
             })}
         </StyledKeyboard>

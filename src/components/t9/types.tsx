@@ -3,3 +3,5 @@ export interface T9Props {
     digitMapping: Record<string, string[]>,
     onSelect: (word: string) => void
 }
+
+export type ScrollDirection = "left" | "right";

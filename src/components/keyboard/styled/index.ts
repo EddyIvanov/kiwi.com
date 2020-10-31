@@ -1,9 +1,9 @@
 import StyledKeyboard from './StyledKeyboard';
-import Button from './Button';
+import Key from './Key';
 import Subtitles from './Subtitles';
 import Title from './Title';
 
-StyledKeyboard.Button = Button;
+StyledKeyboard.Key = Key;
 StyledKeyboard.Subtitles = Subtitles;
 StyledKeyboard.Title = Title;
 

@@ -1,1 +1,1 @@
-export type IconPath = string | string[];
+export type IconPath = string;
