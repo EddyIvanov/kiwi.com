@@ -1,10 +1,13 @@
 import React from "react";
 import Phone from "../../containers/phone";
+import ErrorBoundary from "../errorBoundary";
 
 const App: React.FC = () => {
     return (
         <div className="App">
-            <Phone />
+            <ErrorBoundary>
+                <Phone />
+            </ErrorBoundary>
         </div>
     );
 };
